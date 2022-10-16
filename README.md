@@ -1,5 +1,6 @@
 # cviz
 Sorting algorithm visualizer.
+https://user-images.githubusercontent.com/76965606/196047483-801dc470-ec2c-4169-950e-d4677b266fae.mp4
 ### Current functionality:
 - Pause during sorting then select a different algorithm and continue sorting
 - Change color of the visualization
