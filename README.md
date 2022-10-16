@@ -1,5 +1,5 @@
 # cviz
-Sorting algorithm visualizer with customization and play/pause capability.
+Sorting algorithm visualizer.
 ### Current functionality:
 - Pause during sorting then select a different algorithm and continue sorting
 - Change color of the visualization
