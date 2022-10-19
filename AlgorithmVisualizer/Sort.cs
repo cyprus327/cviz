@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace AlgorithmVisualizer {
     public abstract class Sort {
-        public bool Paused { get; set; }
         public abstract void StepOnce();
         public abstract void Draw(int i);
 
@@ -17,7 +16,7 @@ namespace AlgorithmVisualizer {
         public void DrawOnceSorted(int[] values, int maxValue, int scale, Graphics g) {
             SolidBrush brush = new SolidBrush(Color.Green);
             try {
-                for (int i = 0; i < values.Length - 1; i++) {
+                for (int i = 0; i < values.Length; i++) {
                     if (i % 10 == 0) Thread.Sleep(1); // slowdown
                     g.FillRectangle(brush, i * scale, maxValue - values[i], 1 * scale, maxValue);
                 }
@@ -60,12 +59,16 @@ namespace AlgorithmVisualizer {
             }
         }
 
-        public Color GradientColor(int[] values, int maxVal, Color foregroundCol, int index) {
-            int c = maxVal * values[index] / values.Length;
-            int d = (int)(values.Length / (maxVal / (0.077 * values.Length)));
-            int rc = foregroundCol.R - c / d <= 0 ? 1 : foregroundCol.R - c / d;
-            int gc = foregroundCol.G - c / d <= 0 ? 1 : foregroundCol.G - c / d;
-            int bc = foregroundCol.B - c / d <= 0 ? 1 : foregroundCol.B - c / d;
+        // this is now broken even though the gdnt should be much better than the old solution
+        public Color GradientColor(int[] values, int maxVal, Color foregroundCol, int i) {
+            int Gradient(int c) => (-1 * (values[i] / maxVal) * (c * values[i] / maxVal)) - (values[i] / (values.Length * maxVal)) + c + 60;
+            int rg = Gradient(foregroundCol.R);
+            int gg = Gradient(foregroundCol.G);
+            int bg = Gradient(foregroundCol.B);
+            int rc = rg > 255 ? 255 : rg <= 0 ? 1 : rg;
+            int gc = gg > 255 ? 255 : gg <= 0 ? 1 : gg;
+            int bc = bg > 255 ? 255 : bg <= 0 ? 1 : bg;
+            //Console.Write($"({Gradient(foregroundCol.R)}, {Gradient(foregroundCol.G)}, {Gradient(foregroundCol.B)}), ({rc}, {gc}, {bc}), {values[i]}\n");
             return Color.FromArgb(rc, gc, bc);
         }
     }

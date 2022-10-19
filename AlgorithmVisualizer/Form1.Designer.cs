@@ -43,7 +43,6 @@ namespace AlgorithmVisualizer {
             this.greyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowScanlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ShowEveryStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.currentAlgorithmLabel = new System.Windows.Forms.Label();
@@ -89,7 +88,7 @@ namespace AlgorithmVisualizer {
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // selectAlgorithmToolStripMenuItem
             // 
@@ -106,29 +105,28 @@ namespace AlgorithmVisualizer {
             this.bubbleSortToolStripMenuItem.Name = "bubbleSortToolStripMenuItem";
             this.bubbleSortToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.bubbleSortToolStripMenuItem.Text = "Bubble Sort";
-            this.bubbleSortToolStripMenuItem.Click += new System.EventHandler(this.bubbleSortToolStripMenuItem_Click);
+            this.bubbleSortToolStripMenuItem.Click += new System.EventHandler(this.BubbleSortToolStripMenuItem_Click);
             // 
             // selectSortToolStripMenuItem
             // 
             this.selectSortToolStripMenuItem.Name = "selectSortToolStripMenuItem";
             this.selectSortToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.selectSortToolStripMenuItem.Text = "Select Sort";
-            this.selectSortToolStripMenuItem.Click += new System.EventHandler(this.selectSortToolStripMenuItem_Click);
+            this.selectSortToolStripMenuItem.Click += new System.EventHandler(this.SelectSortToolStripMenuItem_Click);
             // 
             // countingSortToolStripMenuItem
             // 
             this.countingSortToolStripMenuItem.Name = "countingSortToolStripMenuItem";
             this.countingSortToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.countingSortToolStripMenuItem.Text = "Radix Sort (LSD)";
-            this.countingSortToolStripMenuItem.Click += new System.EventHandler(this.radixLSDSortToolStripMenuItem_Click);
+            this.countingSortToolStripMenuItem.Click += new System.EventHandler(this.RadixLSDSortToolStripMenuItem_Click);
             // 
             // sortOptionsToolStripMenuItem
             // 
             this.sortOptionsToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.sortOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorToolStripMenuItem,
-            this.ShowScanlineToolStripMenuItem,
-            this.ShowEveryStepToolStripMenuItem});
+            this.ShowScanlineToolStripMenuItem});
             this.sortOptionsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.sortOptionsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(1);
             this.sortOptionsToolStripMenuItem.Name = "sortOptionsToolStripMenuItem";
@@ -147,87 +145,79 @@ namespace AlgorithmVisualizer {
             this.greyToolStripMenuItem,
             this.purpleToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.colorToolStripMenuItem.Text = "Color";
             // 
             // whiteToolStripMenuItem
             // 
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.whiteToolStripMenuItem.Text = "White";
-            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
+            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.WhiteToolStripMenuItem_Click);
             // 
             // cyanToolStripMenuItem
             // 
             this.cyanToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cyanToolStripMenuItem.Name = "cyanToolStripMenuItem";
-            this.cyanToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.cyanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cyanToolStripMenuItem.Text = "Cyan";
-            this.cyanToolStripMenuItem.Click += new System.EventHandler(this.cyanToolStripMenuItem_Click);
+            this.cyanToolStripMenuItem.Click += new System.EventHandler(this.CyanToolStripMenuItem_Click);
             // 
             // redToolStripMenuItem
             // 
             this.redToolStripMenuItem.BackColor = System.Drawing.Color.Red;
             this.redToolStripMenuItem.Name = "redToolStripMenuItem";
-            this.redToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.redToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.redToolStripMenuItem.Text = "Red";
-            this.redToolStripMenuItem.Click += new System.EventHandler(this.redToolStripMenuItem_Click);
+            this.redToolStripMenuItem.Click += new System.EventHandler(this.RedToolStripMenuItem_Click);
             // 
             // blueToolStripMenuItem
             // 
             this.blueToolStripMenuItem.BackColor = System.Drawing.Color.Blue;
             this.blueToolStripMenuItem.Name = "blueToolStripMenuItem";
-            this.blueToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.blueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.blueToolStripMenuItem.Text = "Blue";
-            this.blueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
+            this.blueToolStripMenuItem.Click += new System.EventHandler(this.BlueToolStripMenuItem_Click);
             // 
             // greenToolStripMenuItem
             // 
             this.greenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.greenToolStripMenuItem.Text = "Green";
-            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            this.greenToolStripMenuItem.Click += new System.EventHandler(this.GreenToolStripMenuItem_Click);
             // 
             // yellowToolStripMenuItem
             // 
             this.yellowToolStripMenuItem.BackColor = System.Drawing.Color.Yellow;
             this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
-            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.yellowToolStripMenuItem.Text = "Yellow";
-            this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
+            this.yellowToolStripMenuItem.Click += new System.EventHandler(this.YellowToolStripMenuItem_Click);
             // 
             // greyToolStripMenuItem
             // 
             this.greyToolStripMenuItem.BackColor = System.Drawing.Color.Gray;
             this.greyToolStripMenuItem.Name = "greyToolStripMenuItem";
-            this.greyToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.greyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.greyToolStripMenuItem.Text = "Grey";
-            this.greyToolStripMenuItem.Click += new System.EventHandler(this.greyToolStripMenuItem_Click);
+            this.greyToolStripMenuItem.Click += new System.EventHandler(this.GreyToolStripMenuItem_Click);
             // 
             // purpleToolStripMenuItem
             // 
             this.purpleToolStripMenuItem.BackColor = System.Drawing.Color.Purple;
             this.purpleToolStripMenuItem.Name = "purpleToolStripMenuItem";
-            this.purpleToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.purpleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.purpleToolStripMenuItem.Text = "Purple";
-            this.purpleToolStripMenuItem.Click += new System.EventHandler(this.purpleToolStripMenuItem_Click);
+            this.purpleToolStripMenuItem.Click += new System.EventHandler(this.PurpleToolStripMenuItem_Click);
             // 
             // ShowScanlineToolStripMenuItem
             // 
             this.ShowScanlineToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.ShowScanlineToolStripMenuItem.Name = "ShowScanlineToolStripMenuItem";
-            this.ShowScanlineToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.ShowScanlineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ShowScanlineToolStripMenuItem.Text = "Gradient";
             this.ShowScanlineToolStripMenuItem.Click += new System.EventHandler(this.GradientSelectToolStripMenuItem_Click);
-            // 
-            // ShowEveryStepToolStripMenuItem
-            // 
-            this.ShowEveryStepToolStripMenuItem.BackColor = System.Drawing.Color.Red;
-            this.ShowEveryStepToolStripMenuItem.Name = "ShowEveryStepToolStripMenuItem";
-            this.ShowEveryStepToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.ShowEveryStepToolStripMenuItem.Text = "Show Every Step (beta)";
-            this.ShowEveryStepToolStripMenuItem.Click += new System.EventHandler(this.ShowEveryStepToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -279,7 +269,7 @@ namespace AlgorithmVisualizer {
             this.playPauseButton.TabIndex = 4;
             this.playPauseButton.Text = "Play";
             this.playPauseButton.UseVisualStyleBackColor = false;
-            this.playPauseButton.Click += new System.EventHandler(this.playPauseButton_Click);
+            this.playPauseButton.Click += new System.EventHandler(this.PlayPauseButton_Click);
             // 
             // ScaleSelector
             // 
@@ -421,7 +411,6 @@ namespace AlgorithmVisualizer {
         private System.Windows.Forms.NumericUpDown SlowdownSelector;
         private System.Windows.Forms.ToolStripMenuItem countingSortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowScanlineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ShowEveryStepToolStripMenuItem;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Timer SortLengthTimer;

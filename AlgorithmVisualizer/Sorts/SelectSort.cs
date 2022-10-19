@@ -16,7 +16,6 @@ namespace AlgorithmVisualizer.Sorts {
             _scale = ints[1];
             _slowdown = ints[2];
             _gradient = bools[0];
-            _showEveryStep = bools[1];
             _g = graphics;
             _foregroundCol = foregroundColor;
         }
@@ -26,7 +25,6 @@ namespace AlgorithmVisualizer.Sorts {
         private readonly int _scale;
         private readonly int _slowdown;
         private readonly bool _gradient;
-        private readonly bool _showEveryStep;
         private readonly Graphics _g;
         private readonly Color _foregroundCol;
 
@@ -41,16 +39,8 @@ namespace AlgorithmVisualizer.Sorts {
                         int t = _values[i];
                         _values[i] = _values[j];
                         _values[j] = t;
-                        if (!_showEveryStep) {
-                            Draw(j);
-                            Draw(i);
-                        }
-                        if (_showEveryStep) {
-                            for (int i = 0; i < _values.Length - 1; i++) {
-                                Draw(i);
-                                Draw(j);
-                            }
-                        }
+                        Draw(j);
+                        Draw(i);
                     }
                 }
                 i++;
@@ -64,7 +54,7 @@ namespace AlgorithmVisualizer.Sorts {
             try {
                 Thread.Sleep(_slowdown);
 
-                _g.FillRectangle(_brushBlack, i * _scale, 0, 2 * _scale, _maxValue); // KEEP THE 2
+                _g.FillRectangle(_brushBlack, i * _scale, 0, 1 * _scale, _maxValue);
 
                 if (_gradient) {
                     _brushForeground.Color = GradientColor(_values, _maxValue, _foregroundCol, i);
@@ -74,8 +64,6 @@ namespace AlgorithmVisualizer.Sorts {
                     _brushForeground.Color = _foregroundCol;
                     _g.FillRectangle(_brushForeground, i * _scale, _maxValue - _values[i], 1 * _scale, _maxValue);
                 }
-
-                if (Paused) return;
             }
             catch (Exception ex) {
                 MessageBox.Show($"Error drawing: {ex.Message}");

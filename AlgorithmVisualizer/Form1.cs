@@ -24,7 +24,6 @@ namespace AlgorithmVisualizer {
         private int _scale = 5;
         private int _slowdown = 0;
         private bool _gradient = true;
-        private bool _showEveryStep = false;
         private bool _playing = false;
 
         private readonly Random _r = new Random();
@@ -40,9 +39,9 @@ namespace AlgorithmVisualizer {
             _bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Bw_DoWhenSorted);
         }
 
-        private Sort GetCurrentlySelectedSort() { // also sets current sort to a new sort not just gets
+        private Sort GetCurrentlySelectedSort() { // also sets current sort
             int[] ints = new int[] { _maxValue, _scale, _slowdown };
-            bool[] bools = new bool[] { _gradient, _showEveryStep };
+            bool[] bools = new bool[] { _gradient };
 
             switch (_currentSelectedSort) {
                 case 0:
@@ -78,7 +77,6 @@ namespace AlgorithmVisualizer {
 
         private void PauseSort() {
             if (_bw.CancellationPending) _bw.CancelAsync();
-            _sort.Paused = true;
 
             _playing = false;
             playPauseButton.Text = "Play";
@@ -88,7 +86,6 @@ namespace AlgorithmVisualizer {
         private void PlaySort() {
             if (_bw == null || _g == null) return;
 
-            _sort.Paused = false;
             if (!_bw.IsBusy) _bw.RunWorkerAsync();
             else return;
 
@@ -135,12 +132,12 @@ namespace AlgorithmVisualizer {
         #endregion bg worker
 
         #region on click
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) {
             if (_g != null) _g.Dispose();
             Application.Exit();
         }
 
-        private void playPauseButton_Click(object sender, EventArgs e) {
+        private void PlayPauseButton_Click(object sender, EventArgs e) {
             if (_playing) {
                 PauseSort();
             }
@@ -153,7 +150,7 @@ namespace AlgorithmVisualizer {
             RandomizeValues();
             RandomizeValues();
             TimeLabel.Text = String.Empty;
-            // keep the second call for now
+            // keep the second call for now, does need to be actually fixed though
         }
 
         private void GradientSelectToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -161,24 +158,19 @@ namespace AlgorithmVisualizer {
             ShowScanlineToolStripMenuItem.BackColor = _gradient ? Color.Green : Color.Red;
         }
 
-        private void ShowEveryStepToolStripMenuItem_Click(object sender, EventArgs e) {
-            _showEveryStep = !_showEveryStep;
-            ShowEveryStepToolStripMenuItem.BackColor = _showEveryStep ? Color.Green : Color.Red;
-        }
-
-        private void bubbleSortToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void BubbleSortToolStripMenuItem_Click(object sender, EventArgs e) {
             _currentSelectedSort = 0;
             _sort = GetCurrentlySelectedSort();
             currentAlgorithmLabel.Text = bubbleSortToolStripMenuItem.Text;
         }
 
-        private void selectSortToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void SelectSortToolStripMenuItem_Click(object sender, EventArgs e) {
             _currentSelectedSort = 1;
             _sort = GetCurrentlySelectedSort();
             currentAlgorithmLabel.Text = selectSortToolStripMenuItem.Text;
         }
 
-        private void radixLSDSortToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void RadixLSDSortToolStripMenuItem_Click(object sender, EventArgs e) {
             _currentSelectedSort = 2;
             _sort = GetCurrentlySelectedSort();
             currentAlgorithmLabel.Text = countingSortToolStripMenuItem.Text;
@@ -196,42 +188,42 @@ namespace AlgorithmVisualizer {
         #endregion on value changed
 
         #region color selection
-        private void whiteToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void WhiteToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = whiteToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void cyanToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CyanToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = cyanToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void redToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void RedToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = redToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void blueToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void BlueToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = blueToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void greenToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void GreenToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = greenToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void yellowToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void YellowToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = yellowToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void greyToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void GreyToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = greyToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }
 
-        private void purpleToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void PurpleToolStripMenuItem_Click(object sender, EventArgs e) {
             _foregroundColor = purpleToolStripMenuItem.BackColor;
             colorToolStripMenuItem.BackColor = _foregroundColor;
         }

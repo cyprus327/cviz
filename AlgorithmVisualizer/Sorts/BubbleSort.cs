@@ -16,7 +16,6 @@ namespace AlgorithmVisualizer.Sorts {
             _scale = ints[1];
             _slowdown = ints[2];
             _gradient = bools[0];
-            _showEveryStep = bools[1];
             _g = graphics;
             _foregroundCol = foregroundColor;
         }
@@ -26,7 +25,6 @@ namespace AlgorithmVisualizer.Sorts {
         private readonly int _scale;
         private readonly int _slowdown;
         private readonly bool _gradient;
-        private readonly bool _showEveryStep;
         private readonly Graphics _g;
         private readonly Color _foregroundCol;
 
@@ -40,16 +38,8 @@ namespace AlgorithmVisualizer.Sorts {
                         int t = _values[i];
                         _values[i] = _values[i + 1];
                         _values[i + 1] = t;
-                        if (!_showEveryStep) {
-                            Draw(i);
-                            Draw(i + 1);
-                        }
-                    }
-                }
-                if (_showEveryStep) {
-                    for (int i = 0; i < _values.Length - 1; i++) {
-                        Thread.Sleep(1);
                         Draw(i);
+                        Draw(i + 1);
                     }
                 }
             }
@@ -73,7 +63,7 @@ namespace AlgorithmVisualizer.Sorts {
                     _g.FillRectangle(_brushForeground, i * _scale, _maxValue - _values[i], 1 * _scale, _maxValue);
                 }
 
-                if (Paused) return;
+                //if (Paused) return;
             }
             catch (Exception ex) {
                 MessageBox.Show($"Error drawing: {ex.Message}");
